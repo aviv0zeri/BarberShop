@@ -14,7 +14,7 @@ Bilingual barber booking and shop-management app — customers book appointments
 |-----|-------------|
 | [handoff/README.md](handoff/README.md) | Design handoff — screens, cart scheduler, i18n |
 | [docs/layout.md](docs/layout.md) | Repo layout |
-| [docs/handoff-study.md](docs/handoff-study.md) | Handoff analysis + port order |
+| [docs/handoff-study.md](docs/handoff-study.md) | **Handoff study** — port order, tokens, data model (read-only `handoff/`) |
 | [docs/todo.md](docs/todo.md) | Backlog |
 | [docs/sandboxer.md](docs/sandboxer.md) | Dev stack runner |
 

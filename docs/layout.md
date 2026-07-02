@@ -1,15 +1,26 @@
 # Repo layout
 
+Canonical structure (matches GateOpen + `setupp application`).
+
 | Path | Role |
 |------|------|
-| `handoff/` | Manager’s Claude Code prototype (design reference) |
-| `alpha/` | Spikes and experiments |
-| `beta/apps/BarberShop/` | Product mobile app |
-| `beta/api/` | API components (not yet created) |
-| `beta/gateopen/` | Shared devstack libs (`engine_paths`) |
+| `handoff/` | **Read-only** manager design reference — see [handoff-study.md](handoff-study.md) |
+| `alpha/` | Experiments / spikes |
+| `beta/apps/BarberShop/` | Product mobile app (`front/` + `back/`) |
+| `beta/api/` | Shared API components (when backend lands) |
+| `beta/gateopen/` | Shared Python libs (`devstack/engine_paths` for tooling) |
+| `docker/` | Container images at **repo root** (not under `beta/`) |
 | `versiontime/` | Version 2.0.0+ |
-| `scripts/` | `local-dev.sh`, sandboxer helpers, prompter |
-| `.engine/` | Gitignored dev state (sandboxer, metro logs) |
+| `scripts/` | Dev helpers (gitignored) |
+| `.engine/` | Local dev state (gitignored) |
+
+There is **no** `api/` or `apps/` at repo root — product code lives only under `beta/`.
+
+## Handoff → product
+
+1. Read [handoff-study.md](handoff-study.md) and `handoff/README.md`
+2. Implement in `beta/apps/BarberShop/front/src/`
+3. Do **not** modify `handoff/`
 
 ## Mobile app
 
@@ -18,9 +29,3 @@ beta/apps/BarberShop/
   front/     Expo React Native
   back/      app-backend.json → future gateway
 ```
-
-## Design → product
-
-1. Read `handoff/README.md`
-2. Implement in `beta/apps/BarberShop/front/src/`
-3. Keep Hebrew/RTL + English/LTR from handoff `STR` strings

@@ -31,6 +31,8 @@ alpha/config/*
 # OS / IDE / author tooling
 .DS_Store
 .cursor/
+!.cursor/rules/
+!.cursor/rules/**
 /testersendbox/
 /sandboxer
 /scripts/
