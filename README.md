@@ -44,6 +44,7 @@ developer-help        # all zsh tools
 
 ## Next
 
-1. Port `handoff/app/*.jsx` screens into `beta/apps/BarberShop/front/`
-2. Add `beta/api/` when backend is defined
-3. `versiontime update` for each milestone
+1. Run `./prompter` → **Metro + Simulator** — four customer tabs (Hebrew default)
+2. Port screens from `handoff/app/*.jsx` into `beta/apps/BarberShop/front/src/`
+3. Add `beta/api/` + `docker/mobile-api` when backend is defined
+4. `versiontime update` for each milestone

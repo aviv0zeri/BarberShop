@@ -1,13 +1,21 @@
-# beta/
-
-**Product stack** — everything that ships or runs as the product.
+# beta — product stack
 
 | Path | Role |
 |------|------|
-| **`apps/`** | Client apps — `apps/<Name>/front` + `back` (`mobilize init`) |
-| **`api/`** | Shared API components (not called "backend") |
-| **`gateopen/`** | Shared Python libs (crypto, logging) for `api/` |
+| `apps/BarberShop/front/` | **Expo React Native** — customer app (v2.0.0: tab shell) |
+| `apps/BarberShop/back/` | Backend pointer (`app-backend.json`) — API TBD |
+| `api/` | Shared API services (empty until v2.1+) |
+| `gateopen/` | Shared Python libs for sandboxer / devstack |
 
-**Docker:** repo root **`docker/`** (images + `components.registry.json`).
+## App entry
 
-Webpages: add when **`setupp web`** exists (no `pages/` folder until then).
+```
+beta/apps/BarberShop/front/
+  App.js                    → LocaleProvider + CustomerTabs
+  src/theme/                → design tokens (from handoff)
+  src/i18n/                 → he/en strings (seed from data.jsx)
+  src/navigation/           → bottom tabs
+  src/screens/customer/     → Home, Shop, Appointments, Profile
+```
+
+Port order: see [docs/handoff-study.md](../docs/handoff-study.md).

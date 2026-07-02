@@ -1,28 +1,34 @@
 # BarberShop backlog (v2)
 
-## Now
+## Done @ 2.0.0
 
-- [ ] `npm install` in `beta/apps/BarberShop/front/`
-- [x] Port `handoff/app/ui.jsx` primitives + theme tokens
-- [ ] Port `handoff/app/data.jsx` → RN i18n + seed data module
-- [ ] Navigation shell (customer vs barber role)
+- [x] GateOpen-style scaffold (versiontime, sandboxer, prompter, mobilize)
+- [x] Handoff imported → `handoff/` (read-only)
+- [x] Expo shell with theme tokens + i18n seed
+- [x] Customer tab navigation (Home · Shop · Appointments · Profile)
+- [x] Docker layout documented (stacks planned for v2.1+)
+
+## Now (2.0.1)
+
+- [ ] Port `handoff/app/ui.jsx` primitives (Btn, Toast, Avatar…)
+- [ ] Wire **Book** CTA → booking flow stub
+- [ ] Home screen — full port from `handoff/app/customer.jsx`
 
 ## Core product (from handoff)
 
 - [ ] Booking flow (`handoff/app/booking.jsx`)
 - [ ] Appointment cart + parallel scheduler (`handoff/app/cart.jsx`) ★
-- [ ] Customer home (`handoff/app/customer.jsx`)
-- [ ] Calendar + schedule (`handoff/app/calendar.jsx`, `schedule.jsx`)
-- [ ] Staff management (`handoff/app/staff.jsx`)
+- [ ] Appointments tab (cancel → undo, reschedule)
+- [ ] Shop tab + products from `data.jsx`
+- [ ] Barber role shell (`handoff/app/staff.jsx`, `calendar.jsx`)
 
-## Backend (later)
+## Backend (v2.1+)
 
-- [ ] `beta/api/gateway` + mobile-api
+- [ ] `beta/api/mobile-api` + `docker/mobile-api`
 - [ ] Replace localStorage patterns with real API
-
-
+- [ ] `scripts/local-dev.sh beta-api` / `beta-all`
 
 ## Tooling
 
-- [ ] Extend `scripts/local-dev.sh` when API stack lands
+- [x] Prompter menu + `--ext` Terminal handoff
 - [ ] `versiontime update` after first shippable milestone

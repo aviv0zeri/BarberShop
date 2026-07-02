@@ -1,10 +1,11 @@
 # alpha — experiments
 
-Use for spikes that are **not** the product app.
+Use for **spikes only** — not the product app, not the design sim.
 
-| Experiment | Notes |
-|------------|-------|
-| HTML prototype | Lives in [`../handoff/`](../handoff/) (manager / Claude Code) |
-| RN port spikes | Optional copies of single screens before merging to `beta/apps/BarberShop/front/` |
+| What | Where |
+|------|--------|
+| **Design simulation** | [`handoff/Barber Booking.html`](../handoff/) — manager prototype, read-only |
+| **Product app** | [`beta/apps/BarberShop/front/`](../beta/apps/BarberShop/front/) — port handoff screens here |
+| **RN spikes** | Optional one-off screens before merging to beta |
 
-Do not treat `handoff/` as alpha — it is the canonical design reference.
+**You do not need alpha for UI work** — handoff already is the interactive prototype. Go straight to beta.

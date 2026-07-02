@@ -1,19 +1,5 @@
 {
-  "schema": 1,
   "app": "BarberShop",
-  "backend": {
-    "kind": "gateway",
-    "component_id": "gateway",
-    "api_source": "beta/api/gateway",
-    "docker_path": "docker/gateway",
-    "port_env": "GATEWAY_PORT",
-    "default_port": 8091,
-    "base_url": "http://127.0.0.1:8091",
-    "health_path": "/health"
-  },
-  "auth": {
-    "dev_admin_username": "app_admin",
-    "dev_admin_password": "change_me"
-  },
-  "prefer_repo_config": true
+  "gateway": null,
+  "note": "API not wired yet — v2.0.0 is Expo shell + handoff port. See docker/README.md."
 }

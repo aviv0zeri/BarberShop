@@ -56,3 +56,8 @@ alpha/config/*
 handoff/*.zip
 handoff/.thumbnail
 handoff/.image-slots.state.json
+
+# Personal onboarding (local only)
+Welcome
+Welcome.md
+Welcome.*
