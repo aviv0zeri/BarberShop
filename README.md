@@ -35,7 +35,8 @@ Bilingual barber booking and shop-management app — customers book appointments
 
 ```bash
 cd ~/work/personal/BarberShop
-prompter              # interactive menu
+./bootstrap-dev.sh    # once after clone (installs local scripts/)
+./prompter              # interactive menu
 .engine/sandboxer --full   # Metro + Simulator
 iphonetest            # physical iPhone (after native install)
 versiontime status
