@@ -1,0 +1,17 @@
+---
+description: Project guardrails — read .cursor docs first, keep structure documented
+alwaysApply: true
+---
+
+# Project Guardrails
+
+1. **Always read `.cursor/cursor-helper.md` before starting work.** Also read other `.cursor/*.md` files when they apply to the task (e.g. `.cursor/sandboxer-workflow.md`, project-specific guides).
+2. **After any change**, update `.cursor/cursor-helper.md` so it matches the current repo layout, ports, Docker services, scripts, and responsibilities.
+3. Never change existing business logic unless the author explicitly approves it.
+4. Never remove existing functions unless the author explicitly authorizes removal.
+5. Never create new top-level guide files or README files without explicit permission — document in `.cursor/` instead (unless the project already uses an approved doc path).
+6. **Tester / QA docs:** use one designated file under `.cursor/` (e.g. `.cursor/tester-guide.md`) — do not scatter tester READMEs.
+7. **Docker:** keep services documented clearly (table: path, purpose, port, compose file, how to run/stop). Prefer updating `.cursor/cursor-helper.md`; mirror in `docker/README.md` only when that pattern already exists in the repo.
+8. **Scripts:** put repeatable dev/test commands in project shell entrypoints (e.g. `scripts/local-dev.sh` subcommands), not only in chat.
+9. **Sandboxer:** local dev uses `./sandboxer`, `./sandboxer --full`, `./sandboxer --stop` (see `.cursor/sandboxer-workflow.md` and `docs/sandboxer.md`). Global CLI: `sandboxer <project>`, `sandboxer-full`, `sandboxer-stop`.
+10. **`handoff/` is read-only** — manager’s Claude Code design reference (not author code). Never edit, move, rename, or delete anything under `handoff/`. Port into `beta/apps/BarberShop/front/` only. Analysis: `docs/handoff-study.md`.
