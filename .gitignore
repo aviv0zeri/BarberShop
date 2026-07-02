@@ -1,0 +1,56 @@
+# Single root gitignore for setupp projects (no nested .gitignore files)
+
+# Expo / React Native (beta/apps/*/front)
+beta/apps/**/front/node_modules/
+beta/apps/**/front/.expo/
+beta/apps/**/front/dist/
+beta/apps/**/front/web-build/
+beta/apps/**/front/expo-env.d.ts
+beta/apps/**/front/.kotlin/
+beta/apps/**/front/.metro-health-check*
+beta/apps/**/front/npm-debug.*
+beta/apps/**/front/yarn-debug.*
+beta/apps/**/front/yarn-error.*
+beta/apps/**/front/.env*.local
+beta/apps/**/front/*.tsbuildinfo
+beta/apps/**/front/ios/
+beta/apps/**/front/android/
+beta/**/.expo-sim-screenshot.png
+
+# API / Python local state
+beta/api/**/.venv/
+beta/api/**/.env
+**/.venv/
+__pycache__/
+*.pyc
+
+# Secrets
+alpha/config/*
+!alpha/config/config.example.py
+
+# OS / IDE / author tooling
+.DS_Store
+.cursor/
+/testersendbox/
+/sandboxer
+/scripts/
+/docs/sandboxer.md
+
+# RPTX engine — tool-derived local state (prompter, ports, env, errors)
+/.engine/
+
+# Legacy engine paths (migrate into .engine/)
+/.prompter/
+/runtimeErrors
+.env
+
+# Versioning local state
+/versiontime/*
+!/versiontime/VERSION.md
+!/versiontime/version.json
+/reverts/
+
+# Handoff bundle — extracted archive (keep sources, not duplicate zip)
+handoff/*.zip
+handoff/.thumbnail
+handoff/.image-slots.state.json

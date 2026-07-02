@@ -1,0 +1,25 @@
+{
+  "name": "barbershop",
+  "version": "2.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "expo start --go --localhost",
+    "start:dev": "expo start --dev-client --localhost",
+    "android": "expo start --go --android --localhost",
+    "ios": "expo start --go --ios --localhost",
+    "ios:dev": "expo start --dev-client --ios --localhost",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "expo": "~54.0.33",
+    "expo-status-bar": "~3.0.9",
+    "react": "19.1.0",
+    "react-native": "0.81.5",
+    "react-native-safe-area-context": "~5.6.0"
+  },
+  "private": true,
+  "engines": {
+    "node": ">=20.19.0",
+    "npm": ">=10.0.0"
+  }
+}

@@ -1,0 +1,129 @@
+#!/usr/bin/env zsh
+# Project prompter — paths + task runners (repo root).
+# Shared engine: ~/.zsh/prompter-core.zsh (install via parent GateOpen sandboxer-install).
+# Runner: scripts/prompter-run.zsh  |  Direct: ./prompter
+set -euo pipefail
+[[ -o xtrace ]] && unsetopt xtrace
+
+ROOT="$(cd "$(dirname "$0")" && pwd)"
+cd "${ROOT}"
+
+typeset -g PROMPTER_SANDBOXER="${ROOT}/.engine/sandboxer"
+typeset -g PROMPTER_DEV_SH="${ROOT}/scripts/local-dev.sh"
+
+prompter__project_version_load() {
+  typeset -g PROMPTER_VER_PROJECT="BarberShop"
+  typeset -g PROMPTER_VER="2.0.0"
+  local vf="${ROOT}/versiontime/version.json"
+  if [[ -f "${vf}" ]]; then
+    PROMPTER_VER="$(python3 -c "import json; print(json.load(open('${vf}'))['version'])" 2>/dev/null || print -r -- 2.0.0)"
+  fi
+}
+
+prompter__project_default_app() {
+  print -r -- "BarberShop · beta/apps/BarberShop/front"
+}
+
+prompter__project_intro_lines() {
+  print -P "%F{${PROMPTER_C_DIM}}Design ref: handoff/ · Port screens from handoff/app/*.jsx%f"
+}
+
+prompter__run_front_core() {
+  prompter__run_with_loader "Expo Go" "${PROMPTER_DEV_SH}" beta-ios-go
+}
+
+prompter__run_front() {
+  prompter__with_timing front prompter__run_front_core
+}
+
+prompter__run_iphone_core() {
+  if [[ -x "${PROMPTER_SANDBOXER}" ]]; then
+    prompter__run_with_loader "iPhone test" "${PROMPTER_SANDBOXER}" iphone test
+  else
+    prompter__run_with_loader "iPhone test" "${PROMPTER_DEV_SH}" beta-iphone
+  fi
+}
+
+prompter__run_iphone() {
+  prompter__with_timing iphone prompter__run_iphone_core
+}
+
+# Example task — replace with your stack commands:
+prompter__run_full_core() {
+  if [[ -x "${PROMPTER_SANDBOXER}" ]]; then
+    prompter__run_with_loader "Full stack" "${PROMPTER_SANDBOXER}" --full
+  elif [[ -x "${PROMPTER_DEV_SH}" ]]; then
+    prompter__run_with_loader "Full stack" "${PROMPTER_DEV_SH}" beta-all
+  else
+    print -P "%F{1}No stack runner — edit ./prompter prompter__run_full_core%f" >&2
+    return 1
+  fi
+}
+
+prompter__run_full() {
+  prompter__with_timing full prompter__run_full_core
+}
+
+prompter__run_stop_core() {
+  if [[ -x "${PROMPTER_SANDBOXER}" ]]; then
+    prompter__run_with_loader "Stopping dev stack" "${PROMPTER_SANDBOXER}" --stop
+  elif [[ -x "${PROMPTER_DEV_SH}" ]]; then
+    prompter__run_with_loader "Stopping dev stack" "${PROMPTER_DEV_SH}" beta-stop
+  else
+    print -P "%F{1}No stop runner — edit ./prompter%f" >&2
+    return 1
+  fi
+}
+
+prompter__run_stop() {
+  prompter__with_timing stop prompter__run_stop_core
+}
+
+_prompter__source_core() {
+  local f
+  for f in "${HOME}/.zsh/prompter-core.zsh" "${ROOT}/scripts/prompter-core.zsh"; do
+    [[ -f "${f}" ]] && { source "${f}"; return 0; }
+  done
+  print -u2 "prompter: missing engine (~/.zsh/prompter-core.zsh). Install from GateOpen: scripts/local-dev.sh sandboxer-install"
+  exit 1
+}
+_prompter__source_core
+
+prompter__ensure_permission() {
+  [[ "${PROMPTER_PERMISSION_SKIP:-}" == 1 ]] && return 0
+  local py="${ROOT}/scripts/permission-gate.py"
+  [[ -f "${py}" ]] || return 0
+  if python3 "${py}" status "${ROOT}" >/dev/null 2>&1; then
+    typeset -g PROMPTER_PERMISSION_OK=1
+    return 0
+  fi
+  typeset -g PROMPTER_PERMISSION_OK=0
+  prompter__engine_load 2>/dev/null || true
+  print ""
+  print -P "%F{1}Project locked%f — %F{${PROMPTER_C_MUTED:-245}}permission key missing or invalid.%f"
+  print -P "%F{${PROMPTER_C_MUTED:-245}}Generate once:%f  python3 scripts/permission-gate.py generate ."
+  print ""
+  print -Pn "%F{${PROMPTER_C_ACCENT:-129}}Enter permission key (or Enter if gate not configured):%f "
+  read -rs key
+  print ""
+  if [[ -z "${key}" ]]; then
+    if python3 "${py}" status "${ROOT}" 2>/dev/null | python3 -c 'import json,sys; d=json.load(sys.stdin); sys.exit(0 if not d.get("enforced") else 1)' 2>/dev/null; then
+      typeset -g PROMPTER_PERMISSION_OK=1
+      return 0
+    fi
+    print -P "%F{1}Locked.%f Stack stays blocked until the key is set."
+    return 1
+  fi
+  if python3 "${py}" verify "${ROOT}" "${key}" >/dev/null 2>&1; then
+    export GATEOPEN_PERMISSION_KEY="${key}"
+    typeset -g PROMPTER_PERMISSION_OK=1
+    print -P "%F{2}✓%f Permission key accepted for this session."
+    return 0
+  fi
+  print -P "%F{1}✗%f Invalid permission key."
+  return 1
+}
+
+prompter__ensure_permission || exit 1
+
+prompter__main "$@"

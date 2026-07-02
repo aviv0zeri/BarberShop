@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "mobile": {
+    "default_app": "",
+    "apps": {}
+  },
+  "iphone": {
+    "test": ["scripts/local-dev.sh", "beta-iphone"],
+    "update": ["scripts/local-dev.sh", "beta-iphone-update"],
+    "install": ["scripts/local-dev.sh", "beta-iphone-install"],
+    "preflight": ["scripts/local-dev.sh", "beta-iphone-preflight", "--fix"],
+    "execute_dir": ".engine/execute/iphone"
+  },
+  "android": {
+    "enabled": true,
+    "test": ["scripts/local-dev.sh", "beta-android"],
+    "update": ["scripts/local-dev.sh", "beta-android-update"],
+    "install": ["scripts/local-dev.sh", "beta-android-install"],
+    "preflight": ["scripts/local-dev.sh", "beta-android-preflight", "--fix"],
+    "execute_dir": ".engine/execute/android"
+  },
+  "dashboard": {
+    "launcher": "testersendbox/launch.sh",
+    "url": "http://127.0.0.1:5099/"
+  },
+  "prompter": {
+    "menu": [
+      {"id": "full", "label": "Full stack", "run": "full", "timings": true},
+      {"id": "backend", "label": "Backend only", "run": "backend", "timings": true},
+      {"id": "front", "label": "Simulator — Metro + Expo", "run": "front", "timings": true, "returns_to_menu": true},
+      {"id": "android_manager", "label": "Android manager", "run": "android_manager", "timings": true, "returns_to_menu": true},
+      {"id": "doctor", "label": "Doctor", "run": "doctor", "timings": true, "returns_to_menu": true},
+      {"id": "release", "label": "Apply release", "run": "release", "timings": true, "returns_to_menu": true},
+      {"id": "stop", "label": "Stop stack", "run": "stop", "timings": true}
+    ],
+    "quit": {"id": "quit", "label": "Quit"}
+  }
+}
