@@ -3,7 +3,7 @@
 ## Now
 
 - [ ] `npm install` in `beta/apps/BarberShop/front/`
-- [ ] Port `handoff/app/ui.jsx` primitives + theme tokens
+- [x] Port `handoff/app/ui.jsx` primitives + theme tokens
 - [ ] Port `handoff/app/data.jsx` → RN i18n + seed data module
 - [ ] Navigation shell (customer vs barber role)
 
@@ -19,6 +19,8 @@
 
 - [ ] `beta/api/gateway` + mobile-api
 - [ ] Replace localStorage patterns with real API
+
+
 
 ## Tooling
 

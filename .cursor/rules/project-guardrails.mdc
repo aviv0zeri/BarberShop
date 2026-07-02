@@ -14,4 +14,4 @@ alwaysApply: true
 7. **Docker:** keep services documented clearly (table: path, purpose, port, compose file, how to run/stop). Prefer updating `.cursor/cursor-helper.md`; mirror in `docker/README.md` only when that pattern already exists in the repo.
 8. **Scripts:** put repeatable dev/test commands in project shell entrypoints (e.g. `scripts/local-dev.sh` subcommands), not only in chat.
 9. **Sandboxer:** local dev uses `./sandboxer`, `./sandboxer --full`, `./sandboxer --stop` (see `.cursor/sandboxer-workflow.md` and `docs/sandboxer.md`). Global CLI: `sandboxer <project>`, `sandboxer-full`, `sandboxer-stop`.
-10. **`handoff/` is read-only** — manager’s Claude Code design reference (not author code). Never edit, move, rename, or delete anything under `handoff/`. Port into `beta/apps/BarberShop/front/` only. Analysis: `docs/handoff-study.md`.
+10. **`handoff/`** — see `.cursor/rules/handoff-guardrails.mdc` (read-only client design; use `setupp handoff import` for updates).

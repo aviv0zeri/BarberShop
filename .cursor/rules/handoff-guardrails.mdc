@@ -1,0 +1,13 @@
+---
+description: Client design handoff — read-only reference (never modify handoff/)
+alwaysApply: true
+---
+
+# Handoff guardrails
+
+1. **`handoff/` is read-only** — client/stakeholder design reference (HTML/JSX prototype, assets, screenshots). **Not author code.**
+2. **Never** edit, move, rename, or delete anything under `handoff/` unless the client sends a **new** bundle (then use `setupp handoff import --force`).
+3. **Port** designs into `beta/apps/<App>/front/` only — match copy, colors, spacing, and behavior from handoff.
+4. **Study** via `docs/handoff-study.md` and `handoff/README.md` before implementing screens.
+5. **Do not** wire handoff `localStorage` or browser globals into production — replace with real API/state.
+6. Run **`setupp handoff status`** after import; **`setupp handoff doc`** refreshes the study doc skeleton.
