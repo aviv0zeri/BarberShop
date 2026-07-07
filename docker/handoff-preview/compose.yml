@@ -1,0 +1,11 @@
+# Client handoff prototype — static server for side-by-side compare with Simulator.
+# Run: docker compose -f docker/handoff-preview/compose.yml up -d
+services:
+  handoff-preview:
+    image: nginx:1.27-alpine
+    ports:
+      - "${BARBER_HANDOFF_PORT:-5108}:80"
+    volumes:
+      - ../../handoff:/usr/share/nginx/html:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    restart: unless-stopped

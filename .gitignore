@@ -2,6 +2,8 @@
 
 # Expo / React Native (beta/apps/*/front)
 beta/apps/**/front/node_modules/
+# npm workspaces root (beta/package.json) — hoisted deps, never tracked
+beta/node_modules/
 beta/apps/**/front/.expo/
 beta/apps/**/front/dist/
 beta/apps/**/front/web-build/
@@ -68,15 +70,3 @@ handoff/.image-slots.state.json
 Welcome
 Welcome.md
 Welcome.*
-
-# --- Local dev tooling (author-only, not shipped) ---
-/dev/
-/docker/handoff-preview/
-/open-app
-/prompter-snapshot
-/beta/gateopen/permission/
-/testersendbox/
-
-# --- Node dependencies & build caches (blanket, repo-wide) ---
-node_modules/
-.expo/
