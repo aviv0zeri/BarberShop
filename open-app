@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-# One-shot: open BarberShop in iOS Simulator (Expo Go).
-# Requires: npm install in beta/apps/BarberShop/front (done once).
-set -euo pipefail
-ROOT="$(cd "$(dirname "$0")" && pwd)"
-exec bash "${ROOT}/scripts/local-dev.sh" beta-ios-go "$@"
