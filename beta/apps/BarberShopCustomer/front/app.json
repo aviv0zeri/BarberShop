@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "BarberShop",
-    "slug": "barbershop",
-    "scheme": "barbershop",
+    "name": "BarberShop Customer",
+    "slug": "barbershop-customer",
+    "scheme": "barbershop-customer",
     "version": "2.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -17,7 +17,7 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.barbershop.app"
+      "bundleIdentifier": "com.barbershop.customer"
     },
     "android": {
       "adaptiveIcon": {
@@ -26,7 +26,7 @@
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
-      "package": "com.barbershop.app"
+      "package": "com.barbershop.customer"
     }
   }
 }

@@ -15,3 +15,4 @@ alwaysApply: true
 8. **Scripts:** put repeatable dev/test commands in project shell entrypoints (e.g. `scripts/local-dev.sh` subcommands), not only in chat.
 9. **Sandboxer:** local dev uses `./sandboxer`, `./sandboxer --full`, `./sandboxer --stop` (see `.cursor/sandboxer-workflow.md` and `docs/sandboxer.md`). Global CLI: `sandboxer <project>`, `sandboxer-full`, `sandboxer-stop`.
 10. **`handoff/`** — see `.cursor/rules/handoff-guardrails.mdc` (read-only client design; use `setupp handoff import` for updates).
+11. **Push workflow:** when asked to push, always ask which branch to push first and show the available local branches before running push.

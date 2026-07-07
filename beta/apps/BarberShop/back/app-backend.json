@@ -1,5 +1,6 @@
 {
   "app": "BarberShop",
+  "alias_of": "BarberShopCustomer",
   "gateway": null,
-  "note": "API not wired yet — v2.0.0 is Expo shell + handoff port. See docker/README.md."
+  "note": "Deprecated path — use BarberShopCustomer. sandboxer.config.json maps BarberShop → Customer front."
 }

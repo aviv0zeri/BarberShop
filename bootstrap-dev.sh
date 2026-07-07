@@ -17,6 +17,11 @@ mkdir -p "${ROOT}/scripts" "${ROOT}/.engine/prompter"
 cp "${INSTALL_SRC}" "${ROOT}/scripts/setupp-prompter-install.sh"
 SETUPP_PROMPTER_SRC="${GATEOPEN}/scripts" bash "${ROOT}/scripts/setupp-prompter-install.sh" "${ROOT}"
 
+if [[ -f "${ROOT}/dev/local-dev.sh" ]]; then
+  cp "${ROOT}/dev/local-dev.sh" "${ROOT}/scripts/local-dev.sh"
+  chmod +x "${ROOT}/scripts/local-dev.sh"
+fi
+
 if [[ -f "${ROOT}/scripts/sandboxer-config.py" ]]; then
   python3 "${ROOT}/scripts/sandboxer-config.py" ensure "${ROOT}" 2>/dev/null || true
 fi
@@ -25,8 +30,17 @@ if [[ ! -x "${ROOT}/.engine/sandboxer" && -f "${ROOT}/.engine/sandboxer" ]]; the
   chmod +x "${ROOT}/.engine/sandboxer" 2>/dev/null || true
 fi
 
+chmod +x "${ROOT}/open-app" "${ROOT}/prompter-snapshot" "${ROOT}/prompter" 2>/dev/null || true
+
 echo ""
 echo "bootstrap-dev: OK"
-echo "  Canonical path: ${ROOT}"
+echo "  Path: ${ROOT}"
 echo "  Next: ./prompter update && ./prompter"
-echo "  Tip: use ~/work/personal/BarberShop (not ~/workspace — that path is not set up)"
+echo ""
+echo "  Menu test: ./prompter-snapshot"
+echo ""
+if [[ -d "${HOME}/workspace" && ! -L "${HOME}/workspace" ]]; then
+  echo "  NOTE: ~/workspace is a real folder (not a symlink)."
+  echo "  To alias it to ~/work, run FROM HOME (not inside workspace):"
+  echo "    cd ~ && mv workspace workspace.bak && ln -sf work workspace"
+fi

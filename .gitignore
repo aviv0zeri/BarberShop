@@ -33,7 +33,10 @@ alpha/config/*
 .cursor/
 !.cursor/rules/
 !.cursor/rules/**
-/testersendbox/
+/testersendbox/*
+!/testersendbox/*.sh
+!/testersendbox/*.py
+!/testersendbox/README.md
 /sandboxer
 /scripts/
 /docs/sandboxer.md
@@ -52,7 +55,11 @@ alpha/config/*
 !/versiontime/version.json
 /reverts/
 
-# Handoff bundle — extracted archive (keep sources, not duplicate zip)
+# Design reference + experiments (local-only for this project)
+/handoff/
+/alpha/
+
+# Handoff bundle extras
 handoff/*.zip
 handoff/.thumbnail
 handoff/.image-slots.state.json
@@ -61,3 +68,15 @@ handoff/.image-slots.state.json
 Welcome
 Welcome.md
 Welcome.*
+
+# --- Local dev tooling (author-only, not shipped) ---
+/dev/
+/docker/handoff-preview/
+/open-app
+/prompter-snapshot
+/beta/gateopen/permission/
+/testersendbox/
+
+# --- Node dependencies & build caches (blanket, repo-wide) ---
+node_modules/
+.expo/

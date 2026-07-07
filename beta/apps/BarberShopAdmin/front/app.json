@@ -1,0 +1,22 @@
+{
+  "expo": {
+    "name": "BarberShop Admin",
+    "slug": "barbershop-admin",
+    "version": "2.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0B1E3D"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.barbershop.admin"
+    },
+    "android": {
+      "package": "com.barbershop.admin"
+    }
+  }
+}

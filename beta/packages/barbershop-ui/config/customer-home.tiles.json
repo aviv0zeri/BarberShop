@@ -1,0 +1,8 @@
+{
+  "tiles": [
+    { "id": "nav", "icon": "navigate", "labelKey": "hubNav" },
+    { "id": "visits", "icon": "calendar", "labelKey": "hubVisits" },
+    { "id": "contact", "icon": "whatsapp", "labelKey": "hubContact" },
+    { "id": "shop", "icon": "bag", "labelKey": "hubShop" }
+  ]
+}

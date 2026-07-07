@@ -1,0 +1,10 @@
+{
+  "name": "barbershop-beta",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "apps/BarberShopCustomer/front",
+    "apps/BarberShopBarber/front",
+    "apps/BarberShopAdmin/front"
+  ]
+}

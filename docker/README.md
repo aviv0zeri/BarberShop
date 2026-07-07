@@ -6,7 +6,7 @@ Each subfolder is **one deployable image or stack**. Names describe **what it do
 |--------|------------|--------|----------------|
 | **[`mobile-api/`](mobile-api/)** | REST API for the Expo app (appointments, staff, shop) | **Planned** — add when `beta/api/` lands | **8090** |
 | **[`postgres/`](postgres/)** | PostgreSQL — appointments, customers, inventory | **Planned** | **5433** |
-| **[`docs/`](docs/)** | Per-image docs (ports, env, smoke tests) | Stub | — |
+| **[`handoff-preview/`](handoff-preview/)** | Static nginx serving `handoff/` for compare-apps tester | **Active** | **5108** |
 
 ## How it will connect (v2.1+)
 
@@ -14,7 +14,8 @@ Each subfolder is **one deployable image or stack**. Names describe **what it do
 Expo app  ──REST──►  mobile-api (:8090)
                            └──► postgres (:5433)
 
-You (browser) ──► handoff/Barber Booking.html   (design sim — not Docker)
+You (browser) ──► handoff-preview (:5108) ──► handoff/Barber Booking.html
+Compare flow:   testersendbox/launch-compare.sh  (left handoff + right Simulator)
 ```
 
 **Today (v2.0.0):** mobile-only. Run the app with `prompter` or `scripts/local-dev.sh beta-all`.  
